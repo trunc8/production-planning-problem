@@ -19,7 +19,7 @@ Demand = []
 
 
 
-M = int(input("Enter number of months: ")) 
+M = int(input()) 
 
 for i in range(0, M):  
     Demand.append(int(input()))  
