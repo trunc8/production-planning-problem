@@ -4,35 +4,40 @@ import sys
 import pulp as pl
 
 Demand = []
-M = 2
-Demand.append(3)
-Demand.append(3)
-E = 1
-Hcost = 0
-Fcost = 0
-S = 2
-C = 1
-OTC = 1
-OTPrice = 0
-W = 0 
+# M = 5
+# Demand.append(10)
+# Demand.append(20)
+# Demand.append(30)
+
+# Demand.append(40)
+# Demand.append(70)
+
+# E = 5
+# Hcost = 5
+# Fcost = 5
+# S = 10
+# C = 2
+# OTC = 1
+# OTPrice = 100
+# W = 3
 
 
 
 
-# M = int(input()) 
+M = int(input()) 
 
-# for i in range(0, M):  
-#     Demand.append(int(input()))  
+for i in range(0, M):  
+    Demand.append(int(input()))  
       
-# print(Demand)
-# E = int(input())
-# Hcost = int(input())
-# Fcost = int(input())
-# S = int(input())
-# C = int(input())
-# OTC = int(input())
-# OTPrice = int(input())
-# W = int(input())
+print(Demand)
+E = int(input())
+Hcost = int(input())
+Fcost = int(input())
+S = int(input())
+C = int(input())
+OTC = int(input())
+OTPrice = int(input())
+W = int(input())
 
 tot = 0
 for i in range(M):
