@@ -4,35 +4,35 @@ import sys
 import pulp as pl
 
 Demand = []
-# M = 2
-# Demand.append(3)
-# Demand.append(3)
-# E = 1
-# Hcost = 0
-# Fcost = 0
-# S = 2
-# C = 1
-# OTC = 1
-# OTPrice = 0
-# W = 0 
+M = 2
+Demand.append(3)
+Demand.append(3)
+E = 1
+Hcost = 0
+Fcost = 0
+S = 2
+C = 1
+OTC = 1
+OTPrice = 0
+W = 0 
 
 
 
 
-M = int(input()) 
+# M = int(input()) 
 
-for i in range(0, M):  
-    Demand.append(int(input()))  
+# for i in range(0, M):  
+#     Demand.append(int(input()))  
       
-print(Demand)
-E = int(input())
-Hcost = int(input())
-Fcost = int(input())
-S = int(input())
-C = int(input())
-OTC = int(input())
-OTPrice = int(input())
-W = int(input())
+# print(Demand)
+# E = int(input())
+# Hcost = int(input())
+# Fcost = int(input())
+# S = int(input())
+# C = int(input())
+# OTC = int(input())
+# OTPrice = int(input())
+# W = int(input())
 
 tot = 0
 for i in range(M):
@@ -68,23 +68,23 @@ x4= pl.lpSum(W*Unsold_carpets[j+1] for j in range(M))
 x5= pl.lpSum(OTPrice*Overtime_Carpets[j] for j in range(M))
 prob += x1 + x2 + x3 + x4 + x5 
 prob.solve(pl.PULP_CBC_CMD(msg=0))
-print("Workers per month")
-for i in range(M+1):
-    print(pl.value(Workers[i+1])) 
-print("Hired per month")    
-for i in range(M+1):
-    print(pl.value(Hired[i]))
-print("Fired per month") 
-for i in range(M+1):
-    print(pl.value(Fired[i])) 
-print("Total Carpets per month")    
-for i in range(M):
-    print(pl.value(Total_Carpets[i])) 
-print("Overtime")
-for i in range(M):
-    print(pl.value(Overtime_Carpets[i]))
-print("Unsold")    
-for i in range(M):
-    print(pl.value(Unsold_carpets[i+1]))                
+# print("Workers per month")
+# for i in range(M+1):
+#     print(pl.value(Workers[i+1])) 
+# print("Hired per month")    
+# for i in range(M+1):
+#     print(pl.value(Hired[i]))
+# print("Fired per month") 
+# for i in range(M+1):
+#     print(pl.value(Fired[i])) 
+# print("Total Carpets per month")    
+# for i in range(M):
+#     print(pl.value(Total_Carpets[i])) 
+# print("Overtime")
+# for i in range(M):
+#     print(pl.value(Overtime_Carpets[i]))
+# print("Unsold")    
+# for i in range(M):
+#     print(pl.value(Unsold_carpets[i+1]))                
 
-print(prob)
+print(pl.value(prob.objective))
