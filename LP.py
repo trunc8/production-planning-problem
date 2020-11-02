@@ -46,20 +46,20 @@ for i in range(M):
 Total_Carpets = pl.LpVariable.dicts("Total_Carpets", range(M),lowBound=0,cat=pl.LpInteger)
 Overtime_Carpets = pl.LpVariable.dicts("Overtime_Carpets", range(M),lowBound=0, cat=pl.LpInteger)
 Unsold_carpets = pl.LpVariable.dicts("Unsold_carpets", range(M+1),lowBound=0,cat=pl.LpInteger)
-Workers = pl.LpVariable.dicts("Workers", range(M+2),lowBound=0,cat=pl.LpInteger)
-Hired = pl.LpVariable.dicts("Hired", range(M+1),lowBound=0,cat=pl.LpInteger)
-Fired = pl.LpVariable.dicts("Fired", range(M+1),lowBound=0,cat=pl.LpInteger)
+Workers = pl.LpVariable.dicts("Workers", range(M+1),lowBound=0,cat=pl.LpInteger)
+Hired = pl.LpVariable.dicts("Hired", range(M),lowBound=0,cat=pl.LpInteger)
+Fired = pl.LpVariable.dicts("Fired", range(M),lowBound=0,cat=pl.LpInteger)
 
 Unsold_carpets[0] = 0
 Workers[0] = E
-Workers[M+1] = E
+# Workers[M+1] = E
 
 prob = pl.LpProblem("myProblem", pl.LpMinimize)
 for i in range(M):
     prob += Total_Carpets[i] == C*Workers[i+1] + Overtime_Carpets[i]
 for i in range(M):
     prob += Unsold_carpets[i+1] == Unsold_carpets[i] + Total_Carpets[i] - Demand[i]
-for i in range(M+1):
+for i in range(M):
     prob += Workers[i+1] == Workers[i] + Hired[i] - Fired[i]
 for i in range(M):
     prob += Overtime_Carpets[i] <= OTC*Workers[i+1]    
@@ -67,8 +67,8 @@ for i in range(M):
 prob += pl.lpSum(Total_Carpets[j] for j in range(M))>= tot   
 
 x1= pl.lpSum(S*Workers[j+1] for j in range(M))
-x2= pl.lpSum(Hcost*Hired[j] for j in range(M+1))
-x3= pl.lpSum(Fcost*Fired[j] for j in range(M+1))
+x2= pl.lpSum(Hcost*Hired[j] for j in range(M))
+x3= pl.lpSum(Fcost*Fired[j] for j in range(M))
 x4= pl.lpSum(W*Unsold_carpets[j+1] for j in range(M))
 x5= pl.lpSum(OTPrice*Overtime_Carpets[j] for j in range(M))
 prob += x1 + x2 + x3 + x4 + x5 
