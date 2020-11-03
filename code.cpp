@@ -59,22 +59,23 @@ int main()
 							hold_cost = h*Hcost;
 						}
 						int val=0;
-						if (i+(e+h)*C-D[k]>=totalprod || e+h >= int(totalprod/C)+1)
+						if (i+(e+h)*C+y-D[k]>=totalprod || e+h >= int(totalprod/C)+1)
 							val = 0;
 						else
-							val = v[k+1][i+(e+h)*C-D[k]][e+h];
-						if (i+(e+h)*C-D[k]>=0)
+							val = v[k+1][i+(e+h)*C+y-D[k]][e+h];
+						if (i+(e+h)*C+y-D[k]>=0)
 							x = min(x,(e+h)*S+hold_cost+W*(i+(e+h)*C-D[k])+y*OTPrice+val);
 						else
 							x = INT_MAX;
 					}
 				}
 				v[k][i][e] = x;
+				//cout<<k<<" "<<i<<" "<<e<<" "<<x<<endl;
 			}
 		}
 	}
 
-	cout << v[0][0][0];
+	cout << v[0][0][E];
 
 
 }
