@@ -67,6 +67,7 @@ int main()
 							//cout<<h<<" "<<e<<" "<<val<<endl;
 						}
 						if (i+(e+h)*C+y-D[k]>=0)
+            {
 							if (k==(months-1))
 							{
 								int normcost = 0;
@@ -78,6 +79,7 @@ int main()
 							}
 							else
 								x = min(x,(e+h)*S+hold_cost+W*(i+(e+h)*C+y-D[k])+y*OTPrice+val);
+            }
 						
 					}
 				}
@@ -87,7 +89,7 @@ int main()
 		}
 	}
 
-	cout << v[0][0][E];
+	cout << v[0][0][E] << endl;
 
 
 }
