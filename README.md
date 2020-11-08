@@ -1,7 +1,7 @@
 # CS218M_Assignment
 CS218M [Design and Analysis of Algorithms], Autumn 2020
 
-*Note: The evaluation code has been designed to run on *nix systems. It have not been tested on Windows environment*
+*Note: The evaluation code has been designed to run on *nix systems. It has not been tested on Windows environment*
 
 ### Steps to evaluate the time taken by the two methods
 1. *(Optional)* Enter your python3 virtual environment if you like.
