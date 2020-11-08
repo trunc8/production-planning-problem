@@ -25,12 +25,12 @@ int main()
 	cin >> W;
 
 	//Defining variables and initializing to zero
-	int v[months+1][totalprod][int(totalprod/C)+1];
+	int v[months+1][totalprod][max(int(totalprod/C)+1,E+1)];
 	for (int i=0; i<months+1; i++)
 	{
 		for (int j=0; j<totalprod; j++)
 		{
-			for (int k=0; k<int(totalprod/C)+1; k++)
+			for (int k=0; k<max(int(totalprod/C)+1,E+1); k++)
 			{
 				v[i][j][k] = 0;
 			}
@@ -42,10 +42,10 @@ int main()
 	{
 		for (int i=0; i<totalprod; i++)
 		{
-			for (int e=0; e<int(totalprod/C)+1; e++)
+			for (int e=0; e<max(int(totalprod/C)+1,E+1); e++)
 			{
 				int x = INT_MAX/2;
-				for (int h=-e; h<=int(totalprod/C)-e; h++)
+				for (int h=-e; h<max(int(totalprod/C)+1,E+1)-e; h++)
 				{
 					for (int y=0; y<= OTC*(e+h); y++)
 					{
@@ -59,7 +59,7 @@ int main()
 							hold_cost = h*Hcost;
 						}
 						int val=0;
-						if (i+(e+h)*C+y-D[k]>=totalprod || e+h >= int(totalprod/C)+1)
+						if (i+(e+h)*C+y-D[k]>=totalprod || e+h >= max(int(totalprod/C)+1,E+1))
 							val = 0;
 						else
 						{
@@ -67,7 +67,6 @@ int main()
 							//cout<<h<<" "<<e<<" "<<val<<endl;
 						}
 						if (i+(e+h)*C+y-D[k]>=0)
-            {
 							if (k==(months-1))
 							{
 								int normcost = 0;
@@ -79,7 +78,6 @@ int main()
 							}
 							else
 								x = min(x,(e+h)*S+hold_cost+W*(i+(e+h)*C+y-D[k])+y*OTPrice+val);
-            }
 						
 					}
 				}
@@ -88,7 +86,6 @@ int main()
 			}
 		}
 	}
-
 	cout << v[0][0][E] << endl;
 
 
