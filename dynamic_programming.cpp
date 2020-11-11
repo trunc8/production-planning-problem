@@ -88,6 +88,6 @@ int main()
 			}
 		}
 	}
-	cout << v[0][0][E];
+	cout << v[0][0][E] << endl;
 
 }
