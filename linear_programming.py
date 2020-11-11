@@ -76,7 +76,7 @@ prob += pl.lpSum(Total_Carpets[j] for j in range(M))>= tot
 x1= pl.lpSum(S*Workers[j+1] for j in range(M))
 x2= pl.lpSum(Hcost*Hired[j] for j in range(M+1))
 x3= pl.lpSum(Fcost*Fired[j] for j in range(M+1))
-x4= pl.lpSum(W*Unsold_carpets[j+1] for j in range(M))
+x4= pl.lpSum(W*Unsold_carpets[j+1] for j in range(M-1))
 x5= pl.lpSum(OTPrice*Overtime_Carpets[j] for j in range(M))
 prob += x1 + x2 + x3 + x4 + x5 
 prob.solve(pl.PULP_CBC_CMD(msg=0))
@@ -96,7 +96,7 @@ prob.solve(pl.PULP_CBC_CMD(msg=0))
 # for i in range(M):
 #     print(pl.value(Overtime_Carpets[i]))
 # print("Unsold")    
-# for i in range(M):
+# for i in range(M-1):
 #     print(pl.value(Unsold_carpets[i+1]))                
 
 print(pl.value(prob.objective))
