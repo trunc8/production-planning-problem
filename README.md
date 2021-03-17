@@ -10,7 +10,7 @@ This repository contains the solution to the production planning using two metho
 1. `git clone https://github.com/trunc8/production-planning-problem.git`
 2. `pip3 install pulp`
 
-## Usage: Obtain solution from the two methods on default test cases
+### Usage: Obtain solution from the two methods on default test cases
 1. For linear_programming code
 	1. `time python3 linear_programming.py < dataset1.txt`
 	2. `time python3 linear_programming.py < dataset2.txt`
@@ -19,14 +19,14 @@ This repository contains the solution to the production planning using two metho
 	2. `time ./a.out < dataset1.txt`
 	3. `time ./a.out < dataset2.txt`
 
-## Usage: Generate random testcases with tunable parameters and Compare the time taken by the two methods
+### Usage: Generate random testcases with tunable parameters and Compare the time taken by the two methods
 1. *(Optional)* Modify the ranges of randint function in the *generate_random_testcases.py* script using a text editor
 2. *(Optional)* `python3 generate_random_testcases.py`  
 	The existing testcase files in the *random_testcase*\ directory will be overwritten by newly generated testcases.
 3. `python3 evaluate_testcases.py`  
 	This obtains solutions for each of the testcases in the *random_testcase*\ directory. The order of output is shuffled owing to **multiprocessing** as the objective here is to run over large datasets and compare time taken.
 
-## Authors
+### Authors
 
 * **Siddharth Saha** - [trunc8](https://github.com/trunc8)
 * **Titas Chakraborty** - [titas0602](https://github.com/titas0602)
